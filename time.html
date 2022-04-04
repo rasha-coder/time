@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			*{
+				margin: 0;
+			}
+        #outside{
+			width: 20%;
+			height: 30%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			background: chocolate;
+			
+
+}
+#inside{
+	width: 90%;
+	height: 90%;
+	position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+     text-align: center;
+	 background:violet;
+	
+
+}
+
+#art_time{
+	height: 100px;
+
+font-weight: bolder;
+font-size: 50px;
+color: white;
+line-height: 100px;
+}
+#art_date{
+	height: 80px;
+	
+color: white;
+line-height: 40px;
+	
+}
+
+
+		</style>
+		
+	</head>
+
+	<body>
+		<!-- <button id="starttime">start</button>
+		<button id="endtime">end</button> -->
+		<main id="outside">
+		<main id="inside">
+			<article id="art_time">
+				<h1 id="time">12:30</h1>
+			</article>
+			<article id="art_date">
+				<h1 id="date">11-11-2022</h1>
+
+				<input type="color" id="time_color" oninput="getcolor()"/>
+				
+			</article>
+		</main>
+				
+			
+			
+			
+		</main>
+		
+	<script>
+		//setTimeout الطريقه الاولي لاستخدام 
+		// var time=setTimeout(() => {//setTimeout تستخدم لضبط تأخير تنفيذ اوامر معينه
+			
+		// }, timeout);
+		// //الطريقه التانيه
+		// function runapp(){
+
+		// }
+		//الطريقه التالته
+		// setTimeout(function(){
+			
+		// }, 500);//500 = نص ثانيه
+
+		// clearTimeout(time);//يحذف 
+		// setTimeout(runapp,3*1000);
+      //setIntervalاوامر
+	//   var interval;
+	//   var count=0;
+
+	//   document.getElementById("starttime").addEventListener("click",()=>{
+	// interval=setInterval(function(){//setInterval تستخدم لضبط تكرار تنفيذ اوامر معينه
+	// 	count=count+1;
+	// 	 txt.innerText=count;  
+	//   }, 3*1000);
+	//   })
+	//   document.getElementById("endtime").addEventListener("click",()=>{
+	// 	clearInterval(interval)//يقوم بحذف
+	// 	alert(txt.textContent)
+	//   })
+	// txt.innerHTML=new Date().getDay();//اول يوم في الاسبوع الاحد يبدأمن 0
+	var dates=new Date();
+	var txt=document.getElementById("time");
+	 let date=document.getElementById("date");
+	 let color=document.getElementById("time_color")
+	 let art_time=document.getElementById("art_time")
+	 
+	 function update(){
+	txt.innerHTML=dates.getHours()+":"+dates.getMinutes();
+	date.innerHTML=dates.getDate()+"/"+parseFloat(dates.getMonth()+1)+"/"+dates.getFullYear();
+	//setcolor();
+
+	 }
+	// function min(arg){
+	// 	if(arg<10){
+	// 		return "0"+dates.getMinutes()
+	// 	}else{
+	// 		return dates.getMinutes()
+	// 	}
+	// }
+	function getcolor(){
+localStorage.setItem("color",color.value)
+art_time.style.background=localStorage.getItem("color")
+document.body.style.background=localStorage.getItem("color")
+	}
+function setcolor(){
+color.value=localStorage.getItem("color")
+art_time.style.background=localStorage.getItem("color")
+document.body.style.background=localStorage.getItem("color")
+}
+	onload=update();
+	setInterval(setcolor,100)
+	</script>
+	</body>
+</html>
